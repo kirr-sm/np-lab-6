@@ -1,0 +1,163 @@
+>> f=@(n)(1+1./n). ^n
+error: parse error:
+
+  anonymous function bodies must be single expressions
+
+>>> f=@(n)(1+1./n). ^n
+                    ^
+>> f=@(n)(1+1./n).^n
+f =
+
+@(n) (1 + 1 ./ n) .^ n
+
+>> k=[0:1:9]'
+k =
+
+   0
+   1
+   2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+
+>> format long
+>> n=10.^k
+n =
+
+            1
+           10
+          100
+         1000
+        10000
+       100000
+      1000000
+     10000000
+    100000000
+   1000000000
+
+>> f(n)
+ans =
+
+   2.000000000000000
+   2.593742460100002
+   2.704813829421529
+   2.716923932235520
+   2.718145926824356
+   2.718268237197528
+   2.718280469156428
+   2.718281693980372
+   2.718281786395798
+   2.718282030814509
+
+>> format
+>> 
+>> 
+>> 
+>> n=[2:1:11]';
+>> a=1./(n.*(n+2))
+a =
+
+   1.2500e-01
+   6.6667e-02
+   4.1667e-02
+   2.8571e-02
+   2.0833e-02
+   1.5873e-02
+   1.2500e-02
+   1.0101e-02
+   8.3333e-03
+   6.9930e-03
+
+>> for i=1:10
+s(i)=sum(a(1:i));
+end
+>> s'
+ans =
+
+   0.1250
+   0.1917
+   0.2333
+   0.2619
+   0.2827
+   0.2986
+   0.3111
+   0.3212
+   0.3295
+   0.3365
+
+>> plot(n,a,'o',n,s,'+')
+>> grid on
+>> legend('terms','partial sums')
+>> 
+>> 
+>> function y=f(x)
+y=exp(x.^2).*cos(x);
+end
+>> quad('f',0,pi/2)
+ans = 1.8757
+>> f=@(x)exp(x.^2).*cos(s)
+f =
+
+@(x) exp (x .^ 2) .* cos (s)
+
+>> quad(f,0,pi/2)
+ans = 4.7752
+>> f=@(x)exp(x.^2).*cos(x)
+f =
+
+@(x) exp (x .^ 2) .* cos (x)
+
+>> quad(f,0,pi/2)
+ans = 1.8757
+>> 
+>> 
+>> edit midpoint.m
+>> 
+>> 
+>> 
+>> midpoint
+a = 0
+b = 1.5708
+n = 100
+dx = 0.015708
+approx = 1.8758
+>> edit midpoint_v.m
+>> 
+>> 
+>> midpoint_v
+a = 0
+b = 1.5708
+n = 100
+dx = 0.015708
+approx = 1.8758
+>> 
+>> 
+>> tic;midpoint;toc
+a = 0
+b = 1.5708
+n = 100
+dx = 0.015708
+approx = 1.8758
+Elapsed time is 0.0036211 seconds.
+>> 
+>> tic;midpoint_v;tok
+a = 0
+b = 1.5708
+n = 100
+dx = 0.015708
+approx = 1.8758
+error: 'tok' undefined near line 1, column 16
+>> 
+>> 
+>> tic;midpoint_v;toc
+a = 0
+b = 1.5708
+n = 100
+dx = 0.015708
+approx = 1.8758
+Elapsed time is 0.00162101 seconds.
+>> diary on
